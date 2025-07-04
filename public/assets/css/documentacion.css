@@ -1,0 +1,73 @@
+:root {
+    --primary: #00b894;
+    --primary-dark: #009172;
+    --bg: #f1f4f9;
+    --text-dark: #2d3436;
+    --text-muted: #636e72;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text-dark);
+}
+
+.main-title {
+    font-weight: bold;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    color: var(--primary-dark);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.endpoint-card {
+    background-color: white;
+    border: 1px solid #dfe6e9;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+}
+
+.endpoint-card h5 {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.method-tag {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    color: white;
+}
+
+.GET {
+    background-color: #0984e3;
+}
+
+.POST {
+    background-color: #00b894;
+}
+
+.PUT {
+    background-color: #fdcb6e;
+    color: black;
+}
+
+.DELETE {
+    background-color: #d63031;
+}
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem 0;
+}

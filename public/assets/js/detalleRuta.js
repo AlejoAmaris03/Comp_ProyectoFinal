@@ -8,30 +8,30 @@ function getQueryParam(param) {
 
 function createCard(detalle, index) {
     return `
-                <div class="col-md-6 col-lg-4">
-                    <div class="entrega-card">
-                        <div class="entrega-header">
-                            <div class="entrega-icon me-3">
-                                <i class="fas fa-map-marker-alt fa-lg"></i>
-                            </div>
-                            <div>
-                            <h5 class="card-title mb-0">Punto ${index + 1}</h5>
-                            <small class="text-muted"><i class="fas fa-box me-1"></i> Paquete: ${detalle.numeroPaquete}</small>
-                            </div>
-                        </div>
-                        <ul class="list-unstyled entrega-info">
-                        <li class="mb-1"><i class="fas fa-address-card me-2"></i><strong>Dirección:</strong> ${detalle.direccion}</li>
-                        <li class="mb-1"><i class="fas fa-globe me-2"></i><strong>Latitud:</strong> ${detalle.latitud}</li>
-                        <li class="mb-1"><i class="fas fa-map-marker me-2"></i><strong>Longitud:</strong> ${detalle.longitud}</li>
-                        </ul>
-                        <div class="entrega-actions">
-                        <button class="btn btn-sm btn-outline-danger" onclick="deleteDetalle('${rutaActual.id}', '${detalle.id}')">
-                            <i class="fas fa-trash"></i> Eliminar
-                        </button>
-                        </div>
-                    </div>
+        <div class="entrega-card">
+            <div class="entrega-header">
+                <div class="entrega-icon me-3">
+                    <i class="fas fa-map-marker-alt fa-lg"></i>
                 </div>
-            `;
+
+                <div>
+                    <h5 class="card-title mb-0">Punto ${index + 1}</h5>
+                    <small class="text-muted"><i class="fas fa-box me-1"></i> Paquete: ${detalle.numeroPaquete}</small>
+                </div>
+            </div>
+            <ul class="list-unstyled entrega-info">
+                <li class="mb-1"><i class="fas fa-address-card me-2"></i><strong>Dirección:</strong> ${detalle.direccion}</li>
+                <li class="mb-1"><i class="fas fa-globe me-2"></i><strong>Latitud:</strong> ${detalle.latitud}</li>
+                <li class="mb-1"><i class="fas fa-map-marker me-2"></i><strong>Longitud:</strong> ${detalle.longitud}</li>
+            </ul>
+
+            <div class="entrega-actions">
+                <button class="btn btn-sm btn-outline-danger" onclick="deleteDetalle('${rutaActual.id}', '${detalle.id}')">
+                    <i class="fas fa-trash"></i> Eliminar
+                </button>
+            </div>
+        </div>
+    `;
 }
 
 function showAlert(message, type = 'success') {
@@ -75,26 +75,28 @@ async function fetchRutaDetails(routeId) {
         rutaActual = rutaResult.data;
         document.getElementById('rutaInfo').innerHTML = `
                     <div class="card-custom mb-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="vehiculo-icon me-3">
-                        <i class="fas fa-route fa-lg"></i>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="vehiculo-icon me-3">
+                                <i class="fas fa-route fa-lg"></i>
+                            </div>
+
+                            <h5 class="card-title mb-0">Ruta <span class="badge bg-primary">${rutaActual.id}</span></h5>
                         </div>
-                        <h5 class="card-title mb-0">Ruta <span class="badge bg-primary">${rutaActual.id}</span></h5>
-                    </div>
-                    <ul class="list-unstyled fs-6">
-                        <li class="mb-2">
-                        <i class="fas fa-user text-muted me-2"></i>
-                        <strong>Conductor:</strong> ${rutaActual.conductor}
-                        </li>
-                        <li class="mb-2">
-                        <i class="fas fa-truck text-muted me-2"></i>
-                        <strong>Vehículo:</strong> ${rutaActual.vehiculo}
-                        </li>
-                        <li class="mb-2">
-                        <i class="fas fa-calendar-alt text-muted me-2"></i>
-                        <strong>Fecha:</strong> ${rutaActual.fecha}
-                        </li>
-                    </ul>
+
+                        <ul class="list-unstyled fs-6">
+                            <li class="mb-2">
+                                <i class="fas fa-user text-muted me-2"></i>
+                                <strong>Conductor:</strong> ${rutaActual.conductor}
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-truck text-muted me-2"></i>
+                                <strong>Vehículo:</strong> ${rutaActual.vehiculo}
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-calendar-alt text-muted me-2"></i>
+                                <strong>Fecha:</strong> ${rutaActual.fecha}
+                            </li>
+                        </ul>
                     </div>
                 `;
 

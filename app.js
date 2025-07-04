@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/documentacion', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'documentacion', 'index.html'));
+});
+
 app.get('/vehiculos', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'vehiculos', 'index.html'));
 });
@@ -37,10 +41,6 @@ app.get('/conductores', (req, res) => {
 
 app.get('/rutas', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'rutas', 'index.html'));
-});
-
-app.get('/rutas/ruta', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'rutas', 'ruta.html'));
 });
 
 // Middleware para manejar errores 404

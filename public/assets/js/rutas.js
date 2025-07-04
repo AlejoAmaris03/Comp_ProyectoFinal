@@ -94,7 +94,7 @@ function renderRutas(rutas) {
 
 // Función para redirigir a detalleruta.html
 function redirectToDetalleRuta(id) {
-    window.location.href = "detalleruta.html?id=" + encodeURIComponent(id);
+    window.location.href = "detalleRuta.html?id=" + encodeURIComponent(id);
 }
 
 // Envío del formulario: crear o actualizar ruta

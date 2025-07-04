@@ -40,5 +40,14 @@
     "direccion": "X",
     "numeroPaquete": "1001",
     "fechaCreacion": "2025-02-10T21:59:08.215Z"
+  },
+  {
+    "id": 6,
+    "rutaId": "2",
+    "latitud": "4.705740622870656",
+    "longitud": "-74.10179926944589",
+    "direccion": "CC. Primavera",
+    "numeroPaquete": "1001",
+    "fechaCreacion": "2025-07-04T20:43:04.619Z"
   }
 ]

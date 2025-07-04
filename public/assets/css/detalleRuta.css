@@ -19,9 +19,19 @@ body {
     padding: 2rem 1rem;
 }
 
-h1 {
+.main-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     font-weight: bold;
-    color: var(--primary);
+    color: var(--text-dark);
+
+    .icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
 }
 
 .map-container {
@@ -31,21 +41,6 @@ h1 {
     border: 1px solid var(--border-color);
     margin-bottom: 2rem;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-}
-
-.route-details {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
-}
-
-.route-details h4 {
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: var(--primary-dark);
 }
 
 #rutaInfo p {
@@ -130,6 +125,12 @@ h1 {
 .invalid-feedback {
     font-size: 0.85rem;
     color: #d63031;
+}
+
+#detalleList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    gap: 1.5rem;
 }
 
 .entrega-card {
@@ -231,12 +232,4 @@ h1 {
     font-size: 0.95rem;
     color: var(--text-dark);
     margin-bottom: 0.5rem;
-}
-
-/* Footer optional */
-.footer {
-    margin-top: 3rem;
-    text-align: center;
-    color: var(--text-muted);
-    padding: 2rem 0;
 }
