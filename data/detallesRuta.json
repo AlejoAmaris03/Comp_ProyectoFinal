@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "rutaId": 1,
+    "latitud": 4.56804,
+    "longitud": -74.143129,
+    "direccion": "Avenida Reforma 123",
+    "numeroPaquete": 1001
+  },
+  {
+    "id": 2,
+    "rutaId": 1,
+    "latitud": 4.753136,
+    "longitud": -74.052575,
+    "direccion": "Paseo de la Reforma 456",
+    "numeroPaquete": 1002
+  },
+  {
+    "id": 3,
+    "rutaId": 1,
+    "latitud": 4.682895,
+    "longitud": -74.057549,
+    "direccion": "Paseo de la Reforma 456",
+    "numeroPaquete": 1002
+  },
+  {
+    "id": 4,
+    "rutaId": "3",
+    "latitud": "4.666600",
+    "longitud": "-74.064780",
+    "direccion": "Tejo",
+    "numeroPaquete": "1000",
+    "fechaCreacion": "2025-02-10T21:56:49.003Z"
+  },
+  {
+    "id": 5,
+    "rutaId": "3",
+    "latitud": "4.750412",
+    "longitud": "-74.047876",
+    "direccion": "X",
+    "numeroPaquete": "1001",
+    "fechaCreacion": "2025-02-10T21:59:08.215Z"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "conductor": "Juan Pelaez",
+    "vehiculo": "ABC-123",
+    "fecha": "2025-03-15",
+    "detalles": []
+  },
+  {
+    "id": 2,
+    "conductor": "Maria Gomez",
+    "vehiculo": "XYZ-789",
+    "fecha": "2025-03-16"
+  },
+  {
+    "id": 3,
+    "conductor": "Santiago Perez",
+    "vehiculo": "XYZ-456",
+    "fecha": "2025-02-11",
+    "detalles": []
+  }
+]

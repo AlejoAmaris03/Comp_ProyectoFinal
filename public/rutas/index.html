@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Rutas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.min.css">
+
+    <!-- Custom styles -->
+    <style>
+        :root {
+            --primary: #00b894;
+            --primary-dark: #009172;
+            --bg: #f1f4f9;
+            --card-bg: #ffffff;
+            --text-dark: #2d3436;
+            --text-muted: #636e72;
+            --border-color: #dfe6e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .sidebar {
+            background-color: var(--primary);
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            width: 240px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            color: #fff;
+        }
+
+        .sidebar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .sidebar .nav-link {
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: var(--primary-dark);
+        }
+
+        .content {
+            margin-left: 240px;
+            padding: 2rem;
+        }
+
+        .btn-custom {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .card-custom {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1rem;
+            transition: 0.2s ease all;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-custom:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(0, 184, 148, 0.25);
+        }
+
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem 0;
+        }
+
+        .modal-content {
+            border-radius: 16px;
+        }
+
+        .modal-header {
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        .btn.btn-primary {
+            background-color: var(--primary);
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn.btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .invalid-feedback {
+            font-size: 0.85rem;
+            color: #d63031;
+        }
+
+        .ruta-card {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+            padding: 1rem;
+        }
+
+        .ruta-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .ruta-card .card-title {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .ruta-card .card-text {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .ruta-icon {
+            background-color: rgba(0, 184, 148, 0.15);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-white mb-4">
+            <a class="list-group-item list-group-item-action" href="/">Paquetería Express</a>
+        </h4>
+        <hr class="border-light" />
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/vehiculos"><i class="fas fa-truck me-2"></i>Vehículos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/conductores"><i class="fas fa-users me-2"></i>Conductores</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/rutas"><i class="fas fa-route me-2"></i>Rutas</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold">Gestión de Rutas</h2>
+            <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#rutaModal">
+                <i class="fas fa-plus-circle"></i> Nueva Ruta
+            </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="mb-4">
+            <input type="text" id="searchInput" class="form-control"
+                placeholder="Buscar por conductor, vehículo, fecha o ID" />
+        </div>
+
+        <!-- Alert Messages -->
+        <div id="alertContainer" class="mb-3"></div>
+
+        <!-- Rutas Grid -->
+        <div id="rutasContainer" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- JS insert cards here -->
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar Ruta -->
+    <div class="modal fade" id="rutaModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Agregar Nueva Ruta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="rutaForm" novalidate autocomplete="off">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">ID de Ruta</label>
+                                <input type="hidden" class="form-control" name="idOriginal" required />
+                                <input type="text" class="form-control" name="id" required />
+                                <div class="invalid-feedback">El ID es requerido</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Conductor</label>
+                                <input type="text" class="form-control" name="conductor" required />
+                                <div class="invalid-feedback">El conductor es requerido</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Vehículo</label>
+                                <input type="text" class="form-control" name="vehiculo" required />
+                                <div class="invalid-feedback">El vehículo es requerido</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha</label>
+                                <input type="date" class="form-control" name="fecha" required />
+                                <div class="invalid-feedback">La fecha es requerida</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Guardar Ruta
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar detalles de Ruta -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel">Detalles de la Ruta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="rutaDetailsBody">
+                    <!-- Se insertan los detalles -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="mb-0">&copy; 2025 Paquetería. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Scripts: Bootstrap y SweetAlert2 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.min.js"></script>
+
+    <script>
+        function createCard(ruta) {
+            return `
+            <div class="col-md-6 col-lg-4">
+                <div class="card ruta-card h-100">
+                    <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="ruta-icon me-3">
+                        <i class="fas fa-route fa-lg"></i>
+                        </div>
+                        <div>
+                        <h5 class="card-title mb-0">Ruta ${ruta.id}</h5>
+                        <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> ${ruta.fecha}</small>
+                        </div>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li><i class="fas fa-user text-secondary me-2"></i><strong>Conductor:</strong> ${ruta.conductor}</li>
+                        <li><i class="fas fa-truck text-secondary me-2"></i><strong>Vehículo:</strong> ${ruta.vehiculo}</li>
+                    </ul>
+                    <div class="d-flex justify-content-between gap-2">
+                        <button class="btn btn-sm btn-outline-info w-100" onclick="redirectToDetalleRuta('${ruta.id}')">
+                        <i class="fas fa-info-circle"></i> Detalles
+                        </button>
+                        <button class="btn btn-sm btn-outline-warning w-100" onclick="editRuta('${ruta.id}')">
+                        <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger w-100" onclick="deleteRuta('${ruta.id}')">
+                        <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        }
+        // Función para mostrar alertas
+        function showAlert(message, type = 'success') {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: type,
+                title: message
+            })
+        }
+
+        // Validar formulario de ruta
+        function validateRutaForm(formData) {
+            const id = formData.get('id');
+            const conductor = formData.get('conductor');
+            const vehiculo = formData.get('vehiculo');
+            const fecha = formData.get('fecha');
+            if (!id || id.trim() === '') return false;
+            if (!conductor || conductor.trim() === '') return false;
+            if (!vehiculo || vehiculo.trim() === '') return false;
+            if (!fecha || fecha.trim() === '') return false;
+            return true;
+        }
+
+        // Obtener todas las rutas
+        function fetchRutas() {
+            fetch('/api/rutas')
+                .then(response => {
+                    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+                    return response.json();
+                })
+                .then(result => {
+                    if (result.success) {
+                        renderRutas(result.data);
+                    } else {
+                        throw new Error('Error en la respuesta de la API');
+                    }
+                })
+                .catch(error => showAlert('Error al cargar las rutas: ' + error.message, 'error'));
+        }
+
+        // Renderizar el listado de rutas
+        function renderRutas(rutas) {
+            const container = document.getElementById('rutasContainer');
+            container.innerHTML = '';
+            rutas.forEach(ruta => {
+                const card = createCard(ruta);
+                container.innerHTML += card;
+            });
+        }
+
+        // Función para redirigir a detalleruta.html
+        function redirectToDetalleRuta(id) {
+            window.location.href = "detalleruta.html?id=" + encodeURIComponent(id);
+        }
+
+        // Envío del formulario: crear o actualizar ruta
+        document.getElementById('rutaForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const form = e.target;
+            form.classList.add('was-validated');
+
+            const formData = new FormData(form);
+            if (!validateRutaForm(formData)) return;
+
+            const rutaData = {
+                idOriginal: formData.get('idOriginal'),
+                id: formData.get('id'),
+                conductor: formData.get('conductor'),
+                vehiculo: formData.get('vehiculo'),
+                fecha: formData.get('fecha')
+            };
+
+            const isEditing = form.getAttribute('data-editing') === 'true';
+            const method = isEditing ? 'PUT' : 'POST';
+            const url = isEditing ? `/api/rutas/${rutaData.idOriginal}` : '/api/rutas';
+
+            fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(rutaData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) throw new Error(data.error);
+                    if(!data.success) {
+                        showAlert(data.message, 'error');
+                        return;
+                    }
+                    showAlert(isEditing ? 'Ruta actualizada correctamente' : 'Ruta creada exitosamente', 'success');
+                    fetchRutas();
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('rutaModal'));
+                    modal.hide();
+                    form.reset();
+                    form.classList.remove('was-validated');
+                    form.removeAttribute('data-editing');
+                    document.getElementById('modalTitle').textContent = 'Agregar Nueva Ruta';
+                })
+                .catch(error => showAlert(error.message || 'Error al procesar la solicitud', 'error'));
+        });
+
+        // Función para editar: cargar datos en el formulario
+        function editRuta(id) {
+            fetch(`/api/rutas/${id}`)
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        const ruta = result.data;
+                        document.querySelector('[name="idOriginal"]').value = ruta.id;
+                        document.querySelector('[name="id"]').value = ruta.id;
+                        document.querySelector('[name="conductor"]').value = ruta.conductor;
+                        document.querySelector('[name="vehiculo"]').value = ruta.vehiculo;
+                        document.querySelector('[name="fecha"]').value = ruta.fecha;
+                        document.getElementById('modalTitle').textContent = 'Editar Ruta';
+                        document.getElementById('rutaForm').setAttribute('data-editing', 'true');
+                        new bootstrap.Modal(document.getElementById('rutaModal')).show();
+                    } else {
+                        showAlert(result.message, 'danger');
+                    }
+                })
+                .catch(error => showAlert('Error al cargar la ruta: ' + error.message, 'error'));
+        }
+
+        // Función para eliminar una ruta
+        function deleteRuta(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminarlo!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`/api/rutas/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                showAlert('Ruta eliminada correctamente', 'success');
+                                fetchRutas();
+                            } else {
+                                showAlert('Error al eliminar la ruta', 'error');
+                            }
+                        })
+                        .catch(error => showAlert('Error al eliminar la ruta', 'error'));
+                }
+            });
+        }
+
+        // Buscador unificado: filtra por conductor, vehículo, fecha o ID
+        document.getElementById('searchInput').addEventListener('input', function (e) {
+            const searchTerm = e.target.value.trim();
+            if (searchTerm.length === 0) {
+                fetchRutas();
+                return;
+            }
+
+            // Asume que hay un endpoint de búsqueda que maneja los parámetros
+            const queryString = `?query=${encodeURIComponent(searchTerm)}`;
+            fetch(`/api/rutas/search${queryString}`)
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        renderRutas(result.data);
+                    } else {
+                        showAlert(result.message, 'danger');
+                        document.getElementById('rutasContainer').innerHTML = '';
+                    }
+                })
+                .catch(error => showAlert('Error en la búsqueda: ' + error.message, 'error'));
+        });
+
+        // Al cerrar el modal, limpiar el formulario y resetear modo edición
+        document.getElementById('rutaModal').addEventListener('hidden.bs.modal', function () {
+            const form = document.getElementById('rutaForm');
+            form.reset();
+            form.classList.remove('was-validated');
+            form.removeAttribute('data-editing');
+            document.getElementById('modalTitle').textContent = 'Agregar Nueva Ruta';
+        });
+
+        // Cargar rutas al inicio
+        fetchRutas();
+    </script>
+</body>
+
+</html>

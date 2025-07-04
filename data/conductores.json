@@ -1,0 +1,54 @@
+[
+  {
+    "id": "1",
+    "nombres": "Juan",
+    "apellidos": "Pelaez",
+    "numeroLicencia": "QWE-485",
+    "telefono": "789-120",
+    "correo": "juanP31432@gmail.con"
+  },
+  {
+    "id": "2",
+    "nombres": "Danna Alejandra",
+    "apellidos": "Gómez",
+    "numeroLicencia": "XYZ-456",
+    "telefono": "555-5678",
+    "correo": "maria.gomez@example.com"
+  },
+  {
+    "id": "3",
+    "nombres": "Juan",
+    "apellidos": "Pérez",
+    "numeroLicencia": "A123456",
+    "telefono": "3123456789",
+    "correo": "juan.perez@example.com",
+    "fechaCreacion": "2025-02-10T03:04:58.108Z"
+  },
+  {
+    "id": "5",
+    "nombres": "Andres",
+    "apellidos": "Péreza",
+    "numeroLicencia": "ABC-123",
+    "telefono": "555-1234",
+    "correo": "juan.perez@example.com",
+    "fechaCreacion": "2025-02-10T07:04:05.743Z"
+  },
+  {
+    "id": "6",
+    "nombres": "Andres",
+    "apellidos": "Pérez",
+    "numeroLicencia": "ABC-123",
+    "telefono": "555-1234",
+    "correo": "juan.perez@example.com",
+    "fechaCreacion": "2025-02-10T07:43:41.612Z"
+  },
+  {
+    "id": "7",
+    "nombres": "Daniela",
+    "apellidos": "Pineda ",
+    "numeroLicencia": "ABC-555",
+    "telefono": "31253496666",
+    "correo": "kevin@gmail.com",
+    "fechaCreacion": "2025-02-10T07:45:20.079Z"
+  }
+]

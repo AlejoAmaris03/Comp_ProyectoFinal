@@ -1,0 +1,29 @@
+[
+  {
+    "placa": "XXX123",
+    "modelo": "2021",
+    "color": "Naranja Neon",
+    "marca": "Toyota Urus",
+    "capacidadCarga": "50",
+    "fechaCreacion": "2025-02-10T02:37:15.200Z",
+    "placaOriginal": "QWE414"
+  },
+  {
+    "placa": "XYZ-456",
+    "modelo": "2022",
+    "color": "Naranja",
+    "marca": "Toyota",
+    "capacidadCarga": "700",
+    "fechaCreacion": "2025-02-10T19:16:20.080Z",
+    "placaOriginal": "ABC123"
+  },
+  {
+    "placa": "XYZ-789",
+    "modelo": "2014",
+    "color": "Naranja",
+    "marca": "Toyota",
+    "capacidadCarga": "450",
+    "fechaCreacion": "2025-07-03T19:35:10.634Z",
+    "placaOriginal": "ASD123"
+  }
+]
