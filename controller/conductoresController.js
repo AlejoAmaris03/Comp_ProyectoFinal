@@ -15,7 +15,6 @@ function getAllConductores(req, res) {
 function getConductorById(req, res) {
     try {
         const conductores = conductoresModel.getConductores();
-        console.log("ID recibido:", req.params.id);
         // Comparamos como strings (o convertimos ambos a string)
         const conductor = conductores.find(c => String(c.id) === String(req.params.id));
         if (!conductor) {

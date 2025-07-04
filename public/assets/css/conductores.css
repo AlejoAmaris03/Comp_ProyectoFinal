@@ -1,0 +1,183 @@
+:root {
+    --primary: #00b894;
+    --primary-dark: #009172;
+    --bg: #f1f4f9;
+    --card-bg: #ffffff;
+    --text-dark: #2d3436;
+    --text-muted: #636e72;
+    --border-color: #dfe6e9;
+}
+
+/* General */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--primary);
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    width: 240px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #fff;
+}
+
+.sidebar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.sidebar .nav-link {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: var(--primary-dark);
+}
+
+/* Main content */
+.content {
+    margin-left: 240px;
+    padding: 2rem;
+}
+
+/* Buttons */
+.btn-custom {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn.btn-primary {
+    background-color: var(--primary);
+    border: none;
+    font-weight: 600;
+}
+
+.btn.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Form */
+.form-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 0.9rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 184, 148, 0.2);
+}
+
+.invalid-feedback {
+    font-size: 0.85rem;
+    color: #d63031;
+}
+
+/* Cards - Conductores */
+.conductor-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+    padding: 1rem;
+}
+
+.conductor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+.conductor-avatar {
+    background-color: rgba(0, 184, 148, 0.15);
+    color: var(--primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conductor-card .card-title {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.conductor-card ul li {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 16px;
+}
+
+.modal-header {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background-color: var(--primary);
+    color: white;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+/* Details */
+.conductor-details {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease-in-out;
+}
+
+.conductor-details h4 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.conductor-details ul li {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.conductor-details ul li i {
+    color: var(--text-muted);
+    margin-right: 0.5rem;
+}
+
+/* Footer */
+.footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem 0;
+}
