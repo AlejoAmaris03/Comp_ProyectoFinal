@@ -37,7 +37,7 @@
     <div class="content">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold">Gestión de Rutas</h2>
-            <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#rutaModal">
+            <button class="btn btn-custom" data-bs-toggle="modal" id="modal-btn">
                 <i class="fas fa-plus-circle"></i> Nueva Ruta
             </button>
         </div>
@@ -76,13 +76,15 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Conductor</label>
-                                <input type="text" class="form-control" name="conductor" required />
+                                <select class="form-control" name="conductor" id="conductor" required>
+                                </select>
                                 <div class="invalid-feedback">El conductor es requerido</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Vehículo</label>
-                                <input type="text" class="form-control" name="vehiculo" required />
-                                <div class="invalid-feedback">El vehículo es requerido</div>
+                                <select class="form-control" name="vehiculo" id="vehiculo" required>
+                                </select>
+                                <div class="invalid-feedback">El vehiculo es requerido</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Fecha</label>

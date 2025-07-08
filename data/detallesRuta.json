@@ -49,5 +49,32 @@
     "direccion": "CC. Primavera",
     "numeroPaquete": "1001",
     "fechaCreacion": "2025-07-04T20:43:04.619Z"
+  },
+  {
+    "id": 7,
+    "rutaId": "4",
+    "latitud": "4.6188864",
+    "longitud": "-74.1354241",
+    "direccion": "Plaza de las americas",
+    "numeroPaquete": "1001",
+    "fechaCreacion": "2025-07-08T00:34:29.098Z"
+  },
+  {
+    "id": 8,
+    "rutaId": "4",
+    "latitud": "4.5837825",
+    "longitud": "-74.1574532",
+    "direccion": "El ensueño",
+    "numeroPaquete": "1002",
+    "fechaCreacion": "2025-07-08T00:35:48.950Z"
+  },
+  {
+    "id": 9,
+    "rutaId": "5",
+    "latitud": "4.5837825",
+    "longitud": "-74.1574532",
+    "direccion": "dasd",
+    "numeroPaquete": "dasda",
+    "fechaCreacion": "2025-07-08T00:36:31.708Z"
   }
 ]

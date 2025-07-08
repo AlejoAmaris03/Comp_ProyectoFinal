@@ -1,6 +1,6 @@
 [
   {
-    "placa": "XXX123",
+    "placa": "XXX-123",
     "modelo": "2021",
     "color": "Naranja Neon",
     "marca": "Toyota Urus",
@@ -25,5 +25,13 @@
     "capacidadCarga": "450",
     "fechaCreacion": "2025-07-03T19:35:10.634Z",
     "placaOriginal": "ASD123"
+  },
+  {
+    "placa": "HKL-122",
+    "modelo": "2025",
+    "color": "Rojo",
+    "marca": "Mazda",
+    "capacidadCarga": "500",
+    "fechaCreacion": "2025-07-08T00:33:33.370Z"
   }
 ]

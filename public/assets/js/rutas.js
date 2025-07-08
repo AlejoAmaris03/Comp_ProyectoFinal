@@ -82,6 +82,13 @@ function fetchRutas() {
         .catch(error => showAlert('Error al cargar las rutas: ' + error.message, 'error'));
 }
 
+// Abre el modal
+document.getElementById('modal-btn').addEventListener('click', async () => {
+    await renderConductores();
+    await renderVehiculos();
+    $('#rutaModal').modal('show');
+});
+
 // Renderizar el listado de rutas
 function renderRutas(rutas) {
     const container = document.getElementById('rutasContainer');
@@ -89,6 +96,38 @@ function renderRutas(rutas) {
     rutas.forEach(ruta => {
         const card = createCard(ruta);
         container.innerHTML += card;
+    });
+}
+
+// Renderizar conductores en el select
+async function renderConductores() {
+    const select = document.getElementById('conductor');
+    select.innerHTML = `<option value="">Seleccione un conductor</option> `;
+
+    const res = await fetch('/api/conductores');
+    const conductores = await res.json();
+
+    conductores.data.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = `${c.nombres} ${c.apellidos}`
+        opt.textContent = `${c.nombres} ${c.apellidos}`
+        select.appendChild(opt);
+    });
+}
+
+// Renderizar vehiculos en el select
+async function renderVehiculos() {
+    const select = document.getElementById('vehiculo');
+    select.innerHTML = `<option value="">Seleccione un vehiculo</option> `;
+
+    const res = await fetch('/api/vehiculos');
+    const vehiculos = await res.json();
+
+    vehiculos.data.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = `${v.placa}`
+        opt.textContent = `${v.marca} ${v.modelo}`
+        select.appendChild(opt);
     });
 }
 
@@ -145,7 +184,10 @@ document.getElementById('rutaForm').addEventListener('submit', function (e) {
 });
 
 // Función para editar: cargar datos en el formulario
-function editRuta(id) {
+async function editRuta(id) {
+    await renderConductores();
+    await renderVehiculos();
+
     fetch(`/api/rutas/${id}`)
         .then(response => response.json())
         .then(result => {

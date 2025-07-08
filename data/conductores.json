@@ -17,8 +17,8 @@
   },
   {
     "id": "3",
-    "nombres": "Juan",
-    "apellidos": "Pérez",
+    "nombres": "Carlos",
+    "apellidos": "Smith",
     "numeroLicencia": "A123456",
     "telefono": "3123456789",
     "correo": "juan.perez@example.com",
